@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     
     // 停止计时的按钮
     @IBAction func stopTime(_ sender: UIBarButtonItem) {
+        // 按下按钮后, 停止计时
+        mainTimer.invalidate()
+        isStartFlag = false
     }
     
     // 开始计时的按钮
@@ -42,6 +45,11 @@ class ViewController: UIViewController {
     
     // 重置计时的按钮
     @IBAction func timeReset(_ sender: UIBarButtonItem) {
+        // 按下按钮后先暂停计时, 重置计时, 回归到0
+        mainTimer.invalidate()
+        defaultTime = 0
+        isStartFlag = false
+        displayTimeLabel.text = String(defaultTime)
     }
     
     // selector: 要被计时器重复操作的动作(方法)
